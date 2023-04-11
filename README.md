@@ -7,16 +7,16 @@ En la carpeta Cliente, los del Client, los relacionados con los que se conectan 
 
 (Los chats con mqtt, la conexion para crear nuevos o buscar existentes con client-listener)
 
-Para el servidor hay que ejecutar Servidor.py.
+Para el servidor hay que ejecutar _Servidor.py_.
 
-Para los clientes, Inicio.py.
+Para los clientes, _Inicio.py_.
 ## Juego
 
 (con client-listener)
 
-Para el servidor hay que ejecutar SalaJuegos.py.
+Para el servidor hay que ejecutar _SalaJuegos.py_.
 
-Para los jugadores, Jugador.py
+Para los jugadores, _Jugador.py_.
 
 ## TODO
-Hacer que al pulsar el jugar multijugador desde el chat se abra el juego, ahora mismo da error cuando se concectan los dos jugadores al mandar los datos de juego.
+* Hacer que al pulsar el jugar multijugador desde el chat se abra el juego, ahora mismo da error cuando se concectan los dos jugadores al mandar los datos de juego.
