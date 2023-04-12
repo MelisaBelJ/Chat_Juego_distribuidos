@@ -19,4 +19,4 @@ Para el servidor hay que ejecutar _SalaJuegos.py_.
 Para los jugadores, _Jugador.py_.
 
 ## TODO
-* Hacer que al pulsar el jugar multijugador desde el chat se abra el juego, ahora mismo da error cuando se concectan los dos jugadores al mandar los datos de juego.
+* Hacer que al pulsar el jugar multijugador desde el chat se abra el juego, ahora mismo da error cuando se concectan los dos jugadores al mandar los datos de juego. (¿Puede ser porque la funcion desde dentro de un monitor?)
