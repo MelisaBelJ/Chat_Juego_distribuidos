@@ -30,25 +30,24 @@ class Servidor():
     def atiende(self, c, lClientes, lChats):
         while c.estaEnChat():
             try:
-                m = c.recivirMensaje()
+                m = c.recv()
                 print(m)
                 if m == 1: #    quiere comprobar si un nombre de chat ya está registrado
                     print('a')
-                    nombre = c.recivirMensaje()
-                    c.enviarMensaje(lChats.esta(nombre))
+                    nombre = c.recv()
+                    c.send(lChats.esta(nombre))
                 elif m == 2:  #Quiere entrar a esperar para jugar
                     lClientes.anade(c)
                     c.espera()
                     print(f'{c.getUsuario()} teminado el juego')
                 elif m == 6:  #Quiere entrar a esperar para jugar
-                    lChats.anade(c.recivirMensaje())
+                    lChats.anade(c.recv())
                     print(lChats)
                 elif m == -1:
                     c.setEnChat(0)
                     print(f'{c.getUsuario()} ha salido')
                 else:
-                    c.setEnChat(0)
-                    print(f'{c.getUsuario()} instruccion no reconocida, desconectando')                        
+                    print(f'{c.getUsuario()} instruccion no reconocida')                        
             except EOFError:
                 print('Conexion cortada')
                 break  

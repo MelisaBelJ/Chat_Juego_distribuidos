@@ -24,8 +24,9 @@ class Cliente():
             self.cond.notify_all()  
     def salir(self):
         self.conn.close() 
-    def enviarMensaje(self, m1):
+    def send(self, m1):
         self.conn.send(m1)
-    def recivirMensaje(self):
+    def recv(self):
         return self.conn.recv()
-             
+    def close(self):
+        seld.conn.close()
