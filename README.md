@@ -29,7 +29,7 @@ Para el servidor hay que ejecutar _SalaJuegos.py_.
 Para los jugadores, _Jugador.py_: Consiste en pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta.
 
 ## TODO
-* Corregir error que hace que al terminar el juego caiga el cliente.
+* Corregir error que hace que, cuando se abre el juego multijugador desde el chat, al terminar el juego caiga el cliente.
 * Finalizar cuando algún jugador llegue a una cierta puntuación.
 
 # Documentos
