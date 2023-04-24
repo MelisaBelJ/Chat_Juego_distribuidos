@@ -53,7 +53,7 @@ class Obstaculo():
 class JuegoO():
     def __init__(self):
         self.Jugadores = [Jugador(i) for i in range(2)]
-        self.Obstaculos = [Obstaculo(30), Obstaculo(40), Obstaculo(10), Obstaculo(20)]
+        self.Obstaculos = [Obstaculo(10), Obstaculo(10), Obstaculo(10), Obstaculo(10)]
         self.puntuacion = [0,0]
         self.jugando = True
 
@@ -98,12 +98,8 @@ class JuegoO():
 class Rana(pygame.sprite.Sprite):
     def __init__(self, Jugador):
       super().__init__()
-      self.image = pygame.Surface([Jugador_WIDTH, Jugador_HEIGHT])
-      self.image.fill(BLACK)
-      self.image.set_colorkey(BLACK)
+      self.image = pygame.image.load("lilrana.png")
       self.Jugador = Jugador
-      color = Jugador_COLOR[self.Jugador.get_lado()]
-      pygame.draw.rect(self.image, color, [0,0,Jugador_WIDTH, Jugador_HEIGHT])
       self.rect = self.image.get_rect()
       self.update()
 
@@ -119,10 +115,7 @@ class ObstaculoSprite(pygame.sprite.Sprite):
     def __init__(self, Obstaculo):
         super().__init__()
         self.Obstaculo = Obstaculo
-        self.image = pygame.Surface((Obstaculo.alto, 30))
-        self.image.fill(BLACK)
-        self.image.set_colorkey(BLACK)
-        pygame.draw.rect(self.image, RED, [0, 0, Obstaculo.alto, 30])
+        self.image = pygame.image.load("lillambo.png")
         self.rect = self.image.get_rect()
         self.update()
 
@@ -205,7 +198,7 @@ def empiezaJuego(conn):
     print('conectado')
     lado = conn.recv()
     Juegoinfo = conn.recv()
-    print(f"I am playing {ladoStr[lado]}")
+    print(f"Jugando en {ladoStr[lado]}")
     Juego.update(Juegoinfo)
     display = Display(Juego)
     while Juego.is_jugando():
@@ -220,8 +213,6 @@ def empiezaJuego(conn):
         display.refresh()
         display.tick()
 
-if __name__=="__main__":
-    ip_address = "127.0.0.1"
-    if len(sys.argv)>1:
-        ip_address = sys.argv[1]
-    main(ip_address)
+if __name__=="__main__":   
+    getArg = lambda pD, numArg: pD if len(sys.argv) <= numArg else sys.argv[numArg]
+    main(getArg("127.0.0.1", 1))
