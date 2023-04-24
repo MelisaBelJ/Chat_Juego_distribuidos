@@ -1,4 +1,5 @@
 from multiprocessing.connection import Client
+from tkinter import ttk, simpledialog, messagebox
 import traceback
 import pygame
 import sys, os
@@ -13,8 +14,8 @@ GREEN = (0,255,0)
 tamVentana = (700, 525)
 X, Y = 0, 1
 
-SourceRana = ["RanaI.png", "RanaD.png"]
-ladoStr = ["Izquierda", "Derecha"]
+SourceRana = ["ranaD.png", "ranaI.png"]
+ladoStr = ["Derecha", "Izquierda"]
 
 class Jugador():
     def __init__(self, lado):
@@ -96,7 +97,7 @@ class JuegoO():
 class Rana(pygame.sprite.Sprite):
     def __init__(self, Jugador):
       super().__init__()
-      self.image = pygame.image.load(SourceRana[Jugador.get_pos()])
+      self.image = pygame.image.load(SourceRana[Jugador.get_lado()])
       self.Jugador = Jugador
       self.rect = self.image.get_rect()
       self.update()
@@ -178,18 +179,10 @@ class Display():
     def tick(self):
         self.clock.tick(60)
 
-    def game over(self, lado):
-        self.screen.blit(self.background, (0, 0))
+    def gameOver(self, lado):
         puntuacion = self.Juego.get_puntuacion()
-        font = pygame.font.Font(None, 74)
-        text = font.render(f"{puntuacion[0]}", 1, WHITE)
-        self.screen.blit(text, (250, tamVentana[Y]-30))
-        text = font.render(f"{puntuacion[1]}", 1, WHITE)
-        self.screen.blit(text, (tamVentana[X]-250, tamVentana[Y]-30))
-        winLose = "Perdido" if puntuacion[lado]<puntuación[(lado+1)%2] else "Ganado"
-        text = font.render(f"Has {winLose}", 1, WHITE)
-        self.screen.blit(text, (250, tamVentana[Y]+30))
-        pygame.display.flip()
+        winLose = "Perdido" if puntuacion[lado]<puntuacion[(lado+1)%2] else "Ganado"
+        messagebox.showinfo(f'Has {winLose}', f"Has {winLose}. \n Puntuacion: {puntuacion}")
 
     @staticmethod
     def quit():
