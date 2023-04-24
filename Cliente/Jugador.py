@@ -13,7 +13,7 @@ GREEN = (0,255,0)
 tamVentana = (700, 525)
 X, Y = 0, 1
 
-SourceRana = ["RanaI", "RanaD"]
+SourceRana = ["RanaI.png", "RanaD.png"]
 ladoStr = ["Izquierda", "Derecha"]
 
 class Jugador():
