@@ -30,10 +30,7 @@ Para los jugadores, _Jugador.py_: Consiste en pasar el sprite de un lado de la p
 
 ## TODO
 * Corregir error que hace que al terminar el juego caiga el cliente.
-* Añadir más obstaculos al juego.
-* Elementos visuales juego.
-* ¿Necesaria documentación?
-
+* Finalizar cuando algún jugador llegue a una cierta puntuación.
 
 # Documentos
 ## En Cliente:
