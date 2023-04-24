@@ -13,9 +13,7 @@ GREEN = (0,255,0)
 tamVentana = (700, 525)
 X, Y = 0, 1
 
-Jugador_COLOR = [BLUE, YELLOW]
-Jugador_HEIGHT = 20
-Jugador_WIDTH = 20
+SourceRana = ["RanaI", "RanaD"]
 ladoStr = ["Izquierda", "Derecha"]
 
 class Jugador():
@@ -98,7 +96,7 @@ class JuegoO():
 class Rana(pygame.sprite.Sprite):
     def __init__(self, Jugador):
       super().__init__()
-      self.image = pygame.image.load("lilrana.png")
+      self.image = pygame.image.load(SourceRana[Jugador.get_pos()])
       self.Jugador = Jugador
       self.rect = self.image.get_rect()
       self.update()
