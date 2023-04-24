@@ -178,6 +178,19 @@ class Display():
     def tick(self):
         self.clock.tick(60)
 
+    def game over(self, lado):
+        self.screen.blit(self.background, (0, 0))
+        puntuacion = self.Juego.get_puntuacion()
+        font = pygame.font.Font(None, 74)
+        text = font.render(f"{puntuacion[0]}", 1, WHITE)
+        self.screen.blit(text, (250, tamVentana[Y]-30))
+        text = font.render(f"{puntuacion[1]}", 1, WHITE)
+        self.screen.blit(text, (tamVentana[X]-250, tamVentana[Y]-30))
+        winLose = "Perdido" if puntuacion[lado]<puntuación[(lado+1)%2] else "Ganado"
+        text = font.render(f"Has {winLose}", 1, WHITE)
+        self.screen.blit(text, (250, tamVentana[Y]+30))
+        pygame.display.flip()
+
     @staticmethod
     def quit():
         pygame.quit()
@@ -210,6 +223,7 @@ def empiezaJuego(conn):
         Juego.update(Juegoinfo)
         display.refresh()
         display.tick()
+    display.gameOver(lado)
 
 if __name__=="__main__":   
     getArg = lambda pD, numArg: pD if len(sys.argv) <= numArg else sys.argv[numArg]
