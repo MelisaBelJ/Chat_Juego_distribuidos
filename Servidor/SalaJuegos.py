@@ -78,7 +78,7 @@ class Game():
     def __init__(self, manager):
         self.Jugadores = manager.list( [Jugador(0), Jugador(1)] )
         self.Obstaculos = manager.list( [ Obstaculo(-5, tamVentana[X]//4), Obstaculo(-4, tamVentana[X]-tamVentana[X]//4), 
-                                         Obstaculo(8, tamVentana[X]//3), Obstaculo(6, tamVentana[X]-tamVentana[X]//3) ] )
+                                         Obstaculo(8, tamVentana[X]//3+20), Obstaculo(6, tamVentana[X]-tamVentana[X]//3-20) ] )
         self.puntuacion = manager.list( [0,0] )
         self.jugando = Value('i', 1)
         self.lock = Lock()
