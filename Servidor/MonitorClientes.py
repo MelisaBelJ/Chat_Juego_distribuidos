@@ -27,7 +27,7 @@ class Clientes():
             Jugadores[0].start()
             Jugadores[1].start()
             print('Jugando:', c[0].getUsuario(), c[1].getUsuario())
-            Jugadores[0].join()
+            #Jugadores[0].join()
     
     def __str__(self):
         return self.d
