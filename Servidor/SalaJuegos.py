@@ -8,6 +8,7 @@ tamVentana = (700, 525)
 X, Y = 0, 1
 numObstaculos = 4
 Velocidad = 30
+puntuacionGanar = 10
 
 class Jugador():
     def __init__(self, lado):
@@ -179,6 +180,8 @@ def jugar(lado, conn, game):
             if lado == 1:
                 for i in range(numObstaculos):
                     game.move_Obstaculo(i)
+            if game.getPuntuacion()[lado] >= puntuacionGanar:
+                game.stop()
             conn.send(game.get_info())
     except:
         traceback.print_exc()
