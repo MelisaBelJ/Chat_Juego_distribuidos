@@ -13,7 +13,10 @@ class Clientes():
     def anade(self,c):
         self.d.append(c)  
         n = len(self.d) 
-        if n== 2:
+        if n==1:
+            c.espera()
+            print('1')
+        elif n== 2:
             for c in self.d:
                 c.send(1)        
             c = [None, None]
@@ -27,7 +30,10 @@ class Clientes():
             Jugadores[0].start()
             Jugadores[1].start()
             print('Jugando:', c[0].getUsuario(), c[1].getUsuario())
-            #Jugadores[0].join()
+            Jugadores[0].join()
+            Jugadores[1].join()
+            c[1].notifica()
+            print('2')
     
     def __str__(self):
         return self.d

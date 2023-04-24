@@ -38,9 +38,8 @@ class Servidor():
                     c.send(lChats.esta(nombre))
                 elif m == 2:  #Quiere entrar a esperar para jugar
                     lClientes.anade(c)
-                    c.espera()
                     print(f'{c.getUsuario()} teminado el juego')
-                elif m == 6:  #Quiere entrar a esperar para jugar
+                elif m == 6:  #Quiere crear un nuevo chat
                     lChats.anade(c.recv())
                     print(lChats)
                 elif m == -1:

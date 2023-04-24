@@ -103,9 +103,9 @@ class Game():
 
     def stop(self):
         self.jugando.value = 0        
-        if self.hayClientes:
-            for c in self.clientes:
-                c.notifica()
+        #if self.hayClientes:
+        #    for c in self.clientes:
+        #        c.notifica()
 
     def moverArriba(self, Jugador):
         with self.lock:
@@ -166,7 +166,6 @@ def jugar(lado, conn, game):
             command = ""
             while command != "N":
                 command = conn.recv()
-                print(command)
                 if command == "U":
                     game.moverArriba(lado)
                 elif command == "D":
@@ -180,7 +179,7 @@ def jugar(lado, conn, game):
             if lado == 1:
                 for i in range(numObstaculos):
                     game.move_Obstaculo(i)
-            if game.getPuntuacion()[lado] >= puntuacionGanar:
+            if game.get_puntuacion()[lado] >= puntuacionGanar:
                 game.stop()
             conn.send(game.get_info())
     except:
@@ -202,6 +201,7 @@ def main(ip_address):
                 conn = listener.accept()
                 Jugadores[n_Jugador] = Process(target=jugar, args=(n_Jugador, conn, game))
                 n_Jugador += 1
+                print(n_Jugador)
                 if n_Jugador == 2:
                     Jugadores[0].start()
                     Jugadores[1].start()
