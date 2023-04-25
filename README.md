@@ -1,4 +1,9 @@
 # Practica 3
+Grupo: 
+Melisa Belmonte Jiménez,
+Sergio Gonzalez Montero,
+Fernando Montero Erustes
+
 En la carpeta Servidor, los archivos correspondientes al Listener, que sirve como intermediario entre los clientes tanto para el chat como el juego.
 
 En la carpeta Cliente, los del Client, los relacionados con los que se conectan para jugar/hablar.
