@@ -194,8 +194,6 @@ def main(ip_address):
             empiezaJuego(conn)
     except:
         traceback.print_exc()
-    finally:
-        pygame.quit()
 
 def empiezaJuego(conn):
     Juego = JuegoO()
@@ -217,6 +215,7 @@ def empiezaJuego(conn):
         display.refresh()
         display.tick()
     display.gameOver(lado)
+    pygame.quit()
 
 if __name__=="__main__":   
     getArg = lambda pD, numArg: pD if len(sys.argv) <= numArg else sys.argv[numArg]
