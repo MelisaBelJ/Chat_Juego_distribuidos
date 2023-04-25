@@ -6,6 +6,13 @@ import SalaJuegos
 class CustomManager(BaseManager):
     pass
 
+"""
+
+Gestiona la conectividad de los jugadores con la sala.
+Una vez que se tienen los jugadores necesarios, 2, comienza el juego.
+
+"""
+
 class Clientes():
     def __init__(self):
         self.d = []
@@ -37,7 +44,13 @@ class Clientes():
     
     def __str__(self):
         return self.d
-            
+      
+"""
+
+Gestiona los chats que hay en el servidor
+
+"""
+
 class Chats():
     def __init__(self):
         self.d = []
