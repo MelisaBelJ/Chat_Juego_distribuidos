@@ -9,7 +9,11 @@ En la carpeta Cliente, los del Client, los relacionados con los que se conectan 
 
 Se tienen chats a los que se puede conectar cualquier cliente, teniendo uno con todos en el que se les deja nada más iniciar por defecto.
 
-Para el servidor hay que ejecutar _Servidor.py_.
+Para el servidor hay que ejecutar _Servidor.py_ con la dirección IP como argumento opcional:
+
+'''console
+User@#PATH#Practica-3/Servidor: python3 Servidor.py (dirección IP)
+'''
 
 Para los clientes, _Inicio.py_: Las acciones que pueden hacer los clientes son:
 * Hablar con un bot
