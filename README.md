@@ -12,13 +12,13 @@ Se tienen chats a los que se puede conectar cualquier cliente, teniendo uno con 
 Para el servidor hay que ejecutar _Servidor.py_ con la dirección IP como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
 ```console
-User@#PATH#Practica-3/Servidor:~$ python3 Servidor.py (dirección IP)
+User@#PATH#Practica3/Servidor:~$ python3 Servidor.py (dirección IP)
 ```
 
 Para los clientes, _Inicio.py_ con la dirección IP del servidor como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
 ```console
-User@#PATH#Practica-3/Cliente:~$ python3 Inicio.py (dirección IP servidor)
+User@#PATH#Practica3/Cliente:~$ python3 Inicio.py (dirección IP servidor)
 ```
 
 Las acciones que pueden hacer los clientes son:
@@ -37,14 +37,14 @@ Si se quiere ejecutar desde fuera del chat:
 Para el servidor hay que ejecutar _SalaJuegos.py_ con la dirección IP como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
 ```console
-User@#PATH#Practica-3/Servidor:~$ python3 SalaJuegos.py (dirección IP)
+User@#PATH#Practica3/Servidor:~$ python3 SalaJuegos.py (dirección IP)
 ```
 
 
 Para los jugadores, _Jugador.py_ con la dirección IP de la sala de juegos como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
 ```console
-User@#PATH#Practica-3/Cliente:~$ python3 Jugador.py (dirección IP sala de juegos)
+User@#PATH#Practica3/Cliente:~$ python3 Jugador.py (dirección IP sala de juegos)
 ```
 
 Consiste en pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta. Gana el primero que llegue a 10 puntos.
