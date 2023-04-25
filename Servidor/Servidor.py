@@ -4,6 +4,12 @@ from multiprocessing import Process
 from MonitorClientes import Clientes, CustomManager, Chats
 import sys
 
+"""
+
+Creación del servidor con un Manager personalizado para gestionar clientes y chats
+
+"""
+
 class Servidor():
     def __init__(self, ip_address):
         CustomManager.register('Cliente', Cliente)
@@ -26,20 +32,27 @@ class Servidor():
                         cs+=1
                     except AuthenticationError:
                         print ('Contraseña incorrecta, conexion rechazada')    
-                        
+    
+    """
+    
+    Comprobación de nombres de chat, cola para jugar, salida de usuarios e inputs erróneos.
+    Si hay un fallo se notifica que se ha cortado la conexión.
+    
+    """
+    
     def atiende(self, c, lClientes, lChats):
         while c.estaEnChat():
             try:
                 m = c.recv()
                 print(m)
-                if m == 1: #    quiere comprobar si un nombre de chat ya está registrado
+                if m == 1:      #Quiere comprobar si un nombre de chat ya está registrado
                     print('a')
                     nombre = c.recv()
                     c.send(lChats.esta(nombre))
-                elif m == 2:  #Quiere entrar a esperar para jugar
+                elif m == 2:    #Quiere entrar a esperar para jugar
                     lClientes.anade(c)
                     print(f'{c.getUsuario()} teminado el juego')
-                elif m == 6:  #Quiere crear un nuevo chat
+                elif m == 6:    #Quiere crear un nuevo chat
                     lChats.anade(c.recv())
                     print(lChats)
                 elif m == -1:
