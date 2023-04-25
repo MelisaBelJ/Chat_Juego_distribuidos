@@ -1,8 +1,8 @@
 # Practica 3
-Grupo: 
-Melisa Belmonte Jiménez,
-Sergio Gonzalez Montero,
-Fernando Montero Erustes
+> Grupo: 
+> * Melisa Belmonte Jiménez,
+> * Sergio Gonzalez Montero,
+> * Fernando Montero Erustes
 
 En la carpeta Servidor, los archivos correspondientes al Listener, que sirve como intermediario entre los clientes tanto para el chat como el juego.
 
@@ -55,7 +55,7 @@ User@#PATH#Practica3/Cliente:~$ python3 Jugador.py (dirección IP sala de juegos
 Consiste en pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta. Gana el primero que llegue a 10 puntos.
 
 ## TODO
-* Añadir conversación al bot.
+- [ ] Añadir conversación al bot.
 
 # Documentos
 ## En Cliente:
