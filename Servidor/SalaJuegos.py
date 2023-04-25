@@ -3,12 +3,25 @@ from multiprocessing import Process, Manager, Value, Lock
 import traceback
 import sys
 
+"""
+
+Especificaciones de tamaño de ventana, número de
+jugadores, obstáculos, movimiento y objetivo
+
+"""
+
 ladoStr = ["Izquierda", "Derecha"]
 tamVentana = (700, 525)
 X, Y = 0, 1
 numObstaculos = 4
 Velocidad = 30
 puntuacionGanar = 10
+
+"""
+
+Posiciones iniciales, movimiento y sentido del jugador
+
+"""
 
 class Jugador():
     def __init__(self, lado):
@@ -50,6 +63,14 @@ class Jugador():
     def __str__(self):
         return f"P<{ladoStr[self.lado]}, {self.pos}>"
 
+"""
+
+Movimiento y sentido del obstáculo. Se tiene en cuenta el choque con
+los extremos de la pantalla y el choque de un jugador con el obstáculo,
+enviándolo a su posición inicial.
+
+"""
+
 class Obstaculo():
     def __init__(self, velocity, pInicial):
         self.velocity = velocity
@@ -74,6 +95,13 @@ class Obstaculo():
     def __str__(self):
         return f"B<{self.pos, self.velocity}>"
 
+"""
+
+Se tiene la lista compartida de jugadores y obstáculos. Se comprueba la conexión y se notifica
+si se está jugando. Se recoge la información referida a los jugadores y obstáculos como movimientos
+y puntuación
+
+"""
 
 class Game():
     def __init__(self, manager):
@@ -103,9 +131,6 @@ class Game():
 
     def stop(self):
         self.jugando.value = 0        
-        #if self.hayClientes:
-        #    for c in self.clientes:
-        #        c.notifica()
 
     def moverArriba(self, Jugador):
         with self.lock:
@@ -157,6 +182,12 @@ class Game():
     def __str__(self):
         return f"G<{self.Jugadores[1]}:{self.Jugadores[0]}:{self.Obstaculos}:{self.jugando.value}>"
 
+"""
+
+Haciendo uso de las funciones referidas al movimiento se controla el jugador.
+
+"""
+
 def jugar(lado, conn, game):
     try:
         print(f"inicializaing Jugador {ladoStr[lado]}:{game.get_info()}")
@@ -188,6 +219,12 @@ def jugar(lado, conn, game):
     finally:
         print(f"Game ended {game}")
 
+"""
+
+Los jugadores (procesos) serán capaces de conectarse
+cuando se esté a la espera de aceptar la conexión
+
+"""
 
 def main(ip_address):
     manager = Manager()
