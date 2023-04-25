@@ -11,9 +11,9 @@ Se tienen chats a los que se puede conectar cualquier cliente, teniendo uno con 
 
 Para el servidor hay que ejecutar _Servidor.py_ con la dirección IP como argumento opcional:
 
-'''console
-User@#PATH#Practica-3/Servidor: python3 Servidor.py (dirección IP)
-'''
+```console
+User@#PATH#Practica-3/Servidor:~$ python3 Servidor.py (dirección IP)
+```
 
 Para los clientes, _Inicio.py_: Las acciones que pueden hacer los clientes son:
 * Hablar con un bot
