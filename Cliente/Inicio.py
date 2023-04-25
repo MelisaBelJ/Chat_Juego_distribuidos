@@ -5,7 +5,22 @@ from multiprocessing.connection import Client
 from multiprocessing import Process, Lock, Value
 import sys
 
+    """
+    
+    Abre ventana con título y tamaño indicados para selección de
+    nombre de usuario para el chat a través de VentanaGUI.
+    Finalmente, cierra la ventana de selección de nombre de usuario.
+    
+    """
+
 class Inicio():
+    
+    """
+    
+    Especificaciones de título, tamaño y botones de selección
+    
+    """
+    
     def __init__(self, ip_address):   
         print ('Intentando conectar')
         self.conn = Client(address=(ip_address, 6000), authkey=b'secret password')
@@ -32,7 +47,12 @@ class Inicio():
         self.t.focus_force()
         self.main.mainloop()
         
-        
+    """
+    
+    Lee el contenido y se lo manda al servidor y cierra al terminar
+    
+    """
+    
     def lee(self):
         self.name = self.t.get().rsplit(' ')[0]
         self.conn.send(self.name)
@@ -42,6 +62,12 @@ class Inicio():
         self.conn.send('Q')
         self.conn.close()
   
+    """
+    
+    Conecta con la dirección IP indicada
+    
+    """
+    
 if __name__=="__main__":
     ip_address = "127.0.0.1"
     if len(sys.argv)>1:
