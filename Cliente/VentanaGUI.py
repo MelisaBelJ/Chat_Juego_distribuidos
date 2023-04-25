@@ -6,6 +6,9 @@ from multiprocessing import Process, Lock, Value
 from spaceInvaders.spaceInvaders import JuegoIndividual
 import Jugador
   
+  """
+  Clase para gestionar la ventana en la que aparecen los chats de cada cliente.
+  """
 class VentanaGUI():  
     def __init__(self, conn, nUsuario):
         self.conn = conn
@@ -23,7 +26,7 @@ class VentanaGUI():
         self.main.resizable(height = None, width = None)
         self.main.bind_all("<Control-w>", lambda x: self.main.destroy())
         
-        barra_menus = Menu()
+        barra_menus = Menu() #Barra de menu superior con acciones rapidas
         menu_acciones = Menu(barra_menus, tearoff=False)
         menu_acciones.add_command(label="Nuevo Servidor", accelerator = "Ctrl+N", command = self.creaChat)
         self.main.bind_all("<Control-n>", lambda x: self.creaChat())
@@ -36,7 +39,7 @@ class VentanaGUI():
         barra_menus.add_cascade(menu=menu_acciones, label="Acciones")
         self.main.config(menu=barra_menus)
         
-        self.tabControl = ttk.Notebook(self.main)
+        self.tabControl = ttk.Notebook(self.main) #Pestañas
         self.nuevoChat('bot', False)
         Bot(self.nUsuario, self.tabs['bot'])
         self.nuevoChat('Default')
@@ -47,20 +50,24 @@ class VentanaGUI():
         while self.abierto.value == 1:
             self.checkEscribe()
             
+    #Chceckea si hay algo escrito en los chats y los actualiza
     def checkEscribe(self):
         for _,chat in self.chats.items():
             chat.checkEscribe()
         self.main.update()
         
+        #Al cerrar la ventana avisa al servidor de que ha salido
     def on_closing(self):
         self.conn.send(-1)
         self.abierto.value = 0
         self.main.destroy()
         
+        #abre una ventana que pide un input y lo devuelve formateado
     def ventanaInput(self, mensaje):
         m= simpledialog.askstring('Nombre', mensaje)
         return (m+' ').rsplit(' ')[0]
-        
+      
+    #Gestiona la creacion de un nuevo chat
     def nuevoChat(self, usuario, x = True):
         self.tabs[usuario] = ttk.Frame(self.tabControl)
         self.tabControl.add(self.tabs[usuario], text = usuario)
@@ -70,6 +77,7 @@ class VentanaGUI():
             self.conn.send(6)
             self.conn.send(usuario)
     
+    #Gestiona la peticion del cliente para crear un nuevo chat
     def creaChat(self):
         usuario = self.ventanaInput('Nombre del servidor a crear')
         if usuario != '':
@@ -81,7 +89,8 @@ class VentanaGUI():
                 msg_box = messagebox.askquestion('Ya existe', 'El servidor ya existe, ¿unirse a ese?', icon='warning')
                 if msg_box == 'yes':
                     self.nuevoChat(usuario)
-            
+     
+    #Gestiona la peticion del cliente para buscar un chat
     def buscaChat(self):
         usuario = self.ventanaInput('Nombre del servidor a buscar')
         if usuario != '':
@@ -93,10 +102,12 @@ class VentanaGUI():
                 msg_box = messagebox.askquestion('No existe', 'Servidor no encontrado, ¿crear uno con ese nombre?', icon='warning')
                 if msg_box == 'yes':
                     self.nuevoChat(usuario)
-
+                    
+  #Gestiona la peticion del cliente de jugar
     def juegoSolo(self):
         JuegoIndividual()
             
+    #Gestiona la peticion del cliente de jugar multijugador
     def juegoCon(self):
         messagebox.showinfo('Esperando', 'Esperando a que otro jugador se conecte')
         self.conn.send(2)
