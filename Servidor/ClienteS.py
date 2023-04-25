@@ -1,5 +1,13 @@
 from multiprocessing import Value, Condition
 
+"""
+
+Gestión de usuarios en chat, notificaciones, recepción de información,
+salida y cierre mediante variables condición y valores.
+
+"""
+
+
 class Cliente():
     def __init__(self, conn, usuario):
         self.conn = conn
