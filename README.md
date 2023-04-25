@@ -9,13 +9,19 @@ En la carpeta Cliente, los del Client, los relacionados con los que se conectan 
 
 Se tienen chats a los que se puede conectar cualquier cliente, teniendo uno con todos en el que se les deja nada más iniciar por defecto.
 
-Para el servidor hay que ejecutar _Servidor.py_ con la dirección IP como argumento opcional:
+Para el servidor hay que ejecutar _Servidor.py_ con la dirección IP como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
 ```console
 User@#PATH#Practica-3/Servidor:~$ python3 Servidor.py (dirección IP)
 ```
 
-Para los clientes, _Inicio.py_: Las acciones que pueden hacer los clientes son:
+Para los clientes, _Inicio.py_ con la dirección IP del servidor como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
+
+```console
+User@#PATH#Practica-3/Cliente:~$ python3 Inicio.py (dirección IP servidor)
+```
+
+Las acciones que pueden hacer los clientes son:
 * Hablar con un bot
 * Hablar por chats
 * Crear nuevos chats
@@ -28,18 +34,29 @@ Para los clientes, _Inicio.py_: Las acciones que pueden hacer los clientes son:
 
 Si se quiere ejecutar desde fuera del chat:
 
-Para el servidor hay que ejecutar _SalaJuegos.py_.
+Para el servidor hay que ejecutar _SalaJuegos.py_ con la dirección IP como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
 
-Para los jugadores, _Jugador.py_: Consiste en pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta. Gana el primero que llegue a 10 puntos.
+```console
+User@#PATH#Practica-3/Servidor:~$ python3 SalaJuegos.py (dirección IP)
+```
+
+
+Para los jugadores, _Jugador.py_ con la dirección IP de la sala de juegos como argumento opcional ya que tiene valor por defecto la del ordenador desde el que se ejecuta:
+
+```console
+User@#PATH#Practica-3/Cliente:~$ python3 Jugador.py (dirección IP sala de juegos)
+```
+
+Consiste en pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta. Gana el primero que llegue a 10 puntos.
 
 ## TODO
-* Comentar código
+* Añadir conversación al bot.
 
 # Documentos
 ## En Cliente:
 * ChatGUI.py: Contiene las clases chat que se emplean para los chats y la del bot. Se encarga de las funciones de enviar y recibir mensajes y de la interfaz que se muestra al usuario.
 * Inicio.py: Crea una ventana de inicio en la que se solicita el nombre al usuario, al recibir el nombre de usuario conecta con el servidor y se lo pasa. Una vez conectado, crea un objeto VentanaGUI.
-* Jugador.py: Crea una ventana de juego multijugador que actualiza según los datos que recibe del Listener. En el terminal se informa del lado en el que se encuentra nuestro sprite. Este, se mueve de arriba a abajo con las flechas del teclado y avanza para alejarse de la pared en la que empieza con las felchas de derecha e izquierda. El objetivo es pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta.
+* Jugador.py: Crea una ventana de juego multijugador que actualiza según los datos que recibe del Listener. En el terminal se informa del lado en el que se encuentra nuestro sprite. Este, se mueve de arriba a abajo con las flechas del teclado y avanza para alejarse de la pared en la que empieza con las felchas de derecha e izquierda. El objetivo es pasar el sprite de un lado de la pantalla a otro sin chocar con los obstáculos. Si se llega al otro lado de la pantalla, se suma un punto. Si se choca contra un obstáculo, se resta. Gana el primero en llegar a 10 puntos.
 * VentanaGUI.py: Encargado de la ventana que alberga los chats y el menú de acciones. Es responsable tanto de la lógica de funcionamiento de estos como de la interfaz gráfica del usuario. 
 * spaceInvaders.py: Crea una ventana de juego. La nave se puede mover de derecha a izquierda con las flechas del teclado y se dispara con el espacio. El objetivo es destruir el máximo número de asteroides. 
 ## En Servidor:
